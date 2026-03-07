@@ -1,0 +1,65 @@
+ขั้นตอนในการรันโปรเจคนี้:
+
+npm install
+npm run dev
+
+PROJ_TYPESCRIPT-MAIN
+│
+├── data
+│   ├── carts.json
+│   ├── products.json
+│   └── users.json
+│
+├── public
+│   ├── css
+│   │   └── styles.css
+│   │
+│   └── js
+│       ├── admin.js
+│       ├── login.js
+│       ├── main.js
+│       ├── productSlider.js
+│       ├── shopFilter.js
+│       └── slider.js
+│
+├── src
+│   ├── controllers
+│   │   ├── authController.ts
+│   │   ├── cartController.ts
+│   │   ├── homeController.ts
+│   │   └── productController.ts
+│   │
+│   ├── middleware
+│   │   ├── isAdmin.ts
+│   │   └── isUser.ts
+│   │
+│   ├── models
+│   │   └── productModel.ts
+│   │
+│   ├── routes
+│   │   ├── authRoutes.ts
+│   │   ├── cartRoutes.ts
+│   │   ├── homeRoutes.ts
+│   │   └── productRoutes.ts
+│   │
+│   ├── types
+│   │   └── express-session.d.ts
+│   │
+│   └── app.ts
+│
+├── views
+│   ├── partials
+│   │   ├── footer.ejs
+│   │   ├── header.ejs
+│   │   └── loginModal.ejs
+│   │
+│   ├── cart.ejs
+│   ├── home.ejs
+│   ├── product.ejs
+│   ├── productDetail.ejs
+│   └── shop.ejs
+│
+├── package-lock.json
+├── package.json
+├── Readme
+└── tsconfig.json

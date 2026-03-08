@@ -18,6 +18,8 @@ const router = Router();
 
 router.get("/checkout", isUser, viewCheckout);
 
+
+
 /* =========================
    PLACE ORDER
 ========================= */
@@ -36,5 +38,12 @@ router.get("/my-orders", isUser, viewUserOrders);
 
 router.get("/admin/orders", isAdmin, viewAdminOrders);
 router.post("/admin/orders/:id/status", isAdmin, updateOrderStatus);
+
+// Usr order success
+
+router.get("/orderSuccess", (req, res) => {
+  res.render("orderSuccess");
+});
+
 
 export default router;

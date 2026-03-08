@@ -9,8 +9,10 @@ import { Product } from "../models/productModel";
 
 interface CartItem {
   productId: string;
+  name: string;
   size: string | null;
   quantity: number;
+  price: number;
 }
 
 interface CartsData {
@@ -56,7 +58,7 @@ const isUser = (req: Request): boolean => {
 
 export const addToCart = (req: Request, res: Response): void => {
   if (!isUser(req)) {
-    res.redirect("/login");
+    res.status(401).json({ success: false });
     return;
   }
 
@@ -73,7 +75,7 @@ export const addToCart = (req: Request, res: Response): void => {
   );
 
   if (!product) {
-    res.status(404).send("Product not found");
+    res.status(404).json({ success: false });
     return;
   }
 
@@ -92,13 +94,30 @@ export const addToCart = (req: Request, res: Response): void => {
   } else {
     userCart.push({
       productId,
+      name: product.name,
       size,
       quantity,
+      price: product.price
     });
   }
 
   saveCarts(carts);
-  res.redirect("/cart");
+
+  /* count total items */
+
+  const cartCount = userCart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  if (req.headers.accept?.includes("application/json")) {
+    res.json({
+      success: true,
+      cartCount
+    });
+  } else {
+    res.redirect("/wishlist");
+  }
 };
 
 /* =========================

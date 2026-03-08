@@ -1,0 +1,27 @@
+<%- include("partials/header") %>
+
+<h1>Checkout</h1>
+
+<form method="POST" action="/checkout">
+
+  <h3>Shipping Info</h3>
+
+  <input name="name" placeholder="Full Name" required>
+
+  <input name="address" placeholder="Address" required>
+
+  <input name="phone" placeholder="Phone Number" required>
+
+  <h3>Payment</h3>
+
+  <select name="payment">
+    <option value="card">Credit Card</option>
+    <option value="bank">Bank Transfer</option>
+    <option value="cod">Cash on Delivery</option>
+  </select>
+
+  <button type="submit">Confirm Payment</button>
+
+</form>
+
+<%- include("partials/footer") %>

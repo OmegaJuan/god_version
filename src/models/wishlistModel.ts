@@ -6,6 +6,8 @@ const filePath = path.join(process.cwd(), "data", "wishlists.json");
 export interface WishlistItem {
     userId: number;
     productId: number;
+    name?: string;
+    price?: number;
     size?: string | null;
 }
 

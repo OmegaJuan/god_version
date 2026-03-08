@@ -1,5 +1,13 @@
 import "express-session";
 
+interface CartItem {
+  productId: string;
+  name: string;
+  price: number;
+  quantity: number;
+  size?: string;
+}
+
 declare module "express-session" {
   interface SessionData {
     user?: {
@@ -7,5 +15,6 @@ declare module "express-session" {
       username: string;
       role: "admin" | "user";
     };
+    cart?: CartItem[];
   }
 }

@@ -48,8 +48,11 @@
 
                                     <% if(product.selectedSize){ %>
 
-                                        <form action="/cart/add/<%= product.id %>" method="POST">
+                                        <form action="/cart/add/<%= product.id %>" method="POST"
+                                            class="wishlist-add-cart">
                                             <input type="hidden" name="size" value="<%= product.selectedSize %>">
+                                            <input type="hidden" name="quantity" value="1">
+
                                             <button class="cart-btn">
                                                 Add to Cart
                                             </button>
@@ -88,5 +91,4 @@
                 <% } %>
 
     </section>
-
     <%- include("partials/footer") %>

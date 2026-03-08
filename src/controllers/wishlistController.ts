@@ -13,11 +13,16 @@ const getProducts = () => {
 /* =========================
         ADD WISHLIST
 ========================= */
+/* =========================
+        ADD WISHLIST
+========================= */
 export const addToWishlist = (req: Request, res: Response) => {
 
     const user = req.session.user;
 
-    if (!user) {
+    /* allow only normal user */
+
+    if (!user || user.role !== "user") {
         return res.redirect("/");
     }
 
@@ -25,6 +30,9 @@ export const addToWishlist = (req: Request, res: Response) => {
     const size = req.body.size || null;
 
     const wishlists = getWishlists();
+    const products = getProducts();
+
+    const product = products.find((p: any) => p.id === productId);
 
     const exists = wishlists.find(
         (w) =>
@@ -38,6 +46,8 @@ export const addToWishlist = (req: Request, res: Response) => {
         wishlists.push({
             userId: user.id,
             productId: productId,
+            name: product?.name,
+            price: product?.price,
             size: size
         });
 
@@ -54,7 +64,7 @@ export const removeFromWishlist = (req: Request, res: Response) => {
 
     const user = req.session.user;
 
-    if (!user) {
+    if (!user || user.role === "admin") {
         return res.redirect("/");
     }
 
@@ -84,7 +94,7 @@ export const viewWishlist = (req: Request, res: Response) => {
 
     const user = req.session.user;
 
-    if (!user) {
+    if (!user || user.role === "admin") {
         return res.redirect("/");
     }
 

@@ -32,30 +32,39 @@
         <% if (!user) { %>
           <button type="button" class="user-icon login-button">Login</button>
           <% } else { %>
-            <span>
-              <%= user.username %>
-            </span>
-
             <form action="/logout" method="POST" style="display:inline;">
-              <button type="submit" class="user-icon logout-button">
-                Logout
+              <button type="submit" class="user-icon username-button">
+                <!-- username --> <span class="user-text">
+                  <%= user.username %>
+                </span> <!-- logout text (ซ่อนก่อน) --> <span class="logout-text"> Logout </span>
               </button>
             </form>
             <% } %>
 
               <!-- Wishlist -->
               <% if (!user) { %>
-                <a href="#" class="wishlist-icon">❤</a>
+                <a href="#" class="wishlist-icon">♡</a>
                 <% } else { %>
-                  <a href="/wishlist">❤</a>
+                  <a href="/wishlist" class="wishlist-icon">♡</a>
                   <% } %>
 
                     <!-- Cart -->
                     <% if (!user) { %>
-                      <a href="#" class="cart-icon">🛒</a>
-                      <% } else { %>
-                        <a href="/cart">🛒</a>
-                        <% } %>
+
+                      <a href="#" class="cart-icon" id="cart-icon">🛒</a>
+
+                      <% } else if (user.role==="admin" ) { %>
+
+                        <a href="/admin/orders" class="cart-icon" id="cart-icon">🛒</a>
+
+                        <% } else { %>
+
+                          <a href="/cart" class="cart-icon cart-link" id="cart-icon">
+                            🛒
+                            <span id="cart-count"><%= cartCount %></span>
+                          </a>
+
+                          <% } %>
       </div>
     </div>
 
@@ -206,18 +215,26 @@
   <script>
     const cartBtn = document.querySelector(".cart-icon");
 
-    if (cartBtn) {
+    if (cartBtn && !USER_ROLE) {
       cartBtn.addEventListener("click", function (e) {
         e.preventDefault();
         openLoginModal();
       });
     }
   </script>
-  <script>const wishBtn = document.querySelector(".wishlist-icon");
+  <script>
+    const wishBtn = document.querySelector(".wishlist-icon");
 
     if (wishBtn) {
       wishBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        openLoginModal();
+
+        // ถ้าไม่ login หรือเป็น admin → เปิด modal
+        if (!USER_ROLE || USER_ROLE === "admin") {
+          e.preventDefault();
+          openLoginModal();
+        }
+
       });
-    }</script>
+    }
+  </script>
+  <script src="/js/main.js"></script>

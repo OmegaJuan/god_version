@@ -4,10 +4,35 @@
 
         <% if(cart.length===0){ %>
 
-            <p>Your cart is empty.</p>
+            <div class="cart-empty">
+
+                <div class="cart-empty-icon">
+                    🛒
+                </div>
+
+                <h2>Your cart is empty</h2>
+
+                <p>Looks like you haven't added anything yet.</p>
+
+                <div class="cart-empty-buttons">
+
+                    <a href="/products/shop" class="cart-primary-btn">
+                        Browse Products
+                    </a>
+
+                    <a href="/my-orders" class="cart-secondary-btn">
+                        View My Orders
+                    </a>
+
+                </div>
+
+            </div>
 
             <% } else { %>
 
+                <div class="continue-shopping">
+                    <a href="/products/shop">← Continue Shopping</a>
+                </div>
                 <div class="cart-layout">
 
                     <!-- LEFT -->
@@ -75,9 +100,43 @@
 
                     <!-- RIGHT -->
                     <div class="cart-summary">
+
                         <h3>Order Summary</h3>
-                        <p>Grand Total: <strong>$<%= grandTotal %></strong></p>
-                        <button class="checkout-btn">Checkout</button>
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span>$<%= grandTotal %></span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span class="free">Free</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span>$0</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <strong>$<%= grandTotal %></strong>
+                        </div>
+
+                        <div class="cart-actions">
+
+                            <a href="/my-orders" class="orders-btn">
+                                📦 My Orders
+                            </a>
+
+                            <a href="/checkout" class="checkout-btn">
+                                Checkout
+                            </a>
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -86,8 +145,9 @@
 
     </section>
 
-    <% if(cart.length> 0){ %>
+    <% if(cart.length>0){ %>
         <script>
+
             console.log("CART SCRIPT LOADED");
 
             document.addEventListener("click", function (e) {

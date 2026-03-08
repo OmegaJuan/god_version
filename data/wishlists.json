@@ -1,67 +1,16 @@
 [
   {
-    "userId": 2,
-    "productId": 7,
-    "size": "M"
-  },
-  {
-    "userId": 2,
-    "productId": 2,
+    "userId": 4,
+    "productId": 3,
+    "name": "Nike Sportswear Club (Navy)",
+    "price": 70,
     "size": null
   },
   {
-    "userId": 2,
-    "productId": 8,
-    "size": null
-  },
-  {
-    "userId": 3,
-    "productId": 107,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 103,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 115,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 140,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 110,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 133,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 141,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 120,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 136,
-    "size": "S"
-  },
-  {
-    "userId": 3,
-    "productId": 148,
-    "size": "S"
+    "userId": 4,
+    "productId": 3,
+    "name": "Nike Sportswear Club (Navy)",
+    "price": 70,
+    "size": "XL"
   }
 ]

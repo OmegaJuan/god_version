@@ -41,6 +41,7 @@ export const viewCheckout = (req: Request, res: Response) => {
         cart: userCart
     });
 
+
 };
 
 /* =========================
@@ -87,7 +88,7 @@ export const placeOrder = (req: Request, res: Response) => {
     saveOrders(orders);
     saveCarts(carts);
 
-    res.render("orderSuccess");
+    res.redirect("/orders/orderSuccess");
 
 };
 
@@ -165,4 +166,8 @@ export const viewUserOrders = (req: Request, res: Response) => {
         user
     });
 
+    
+
 };
+
+
